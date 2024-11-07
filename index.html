@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de JavaScript</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <h1>Quiz de JavaScript</h1>
+    <form id="quiz-form">
+        <div class="question">
+            <p>1. O que é JavaScript?</p>
+            <label><input type="radio" name="q1" value="a"> A) Uma linguagem de programação</label><br>
+            <label><input type="radio" name="q1" value="b"> B) Um sistema operacional</label><br>
+            <label><input type="radio" name="q1" value="c"> C) Um banco de dados</label>
+        </div>
+        <div class="question">
+            <p>2. Qual é a função do `console.log`?</p>
+            <label><input type="radio" name="q2" value="a"> A) Para exibir mensagens no console</label><br>
+            <label><input type="radio" name="q2" value="b"> B) Para fazer requisições HTTP</label><br>
+            <label><input type="radio" name="q2" value="c"> C) Para definir variáveis</label>
+        </div>
+        <div class="question">
+            <p>3. O que é uma função em JavaScript?</p>
+            <label><input type="radio" name="q3" value="a"> A) Um tipo de objeto</label><br>
+            <label><input type="radio" name="q3" value="b"> B) Um bloco de código que executa uma tarefa</label><br>
+            <label><input type="radio" name="q3" value="c"> C) Um loop</label>
+        </div>
+        <div class="question">
+            <p>4. O que significam `var`, `let` e `const`?</p>
+            <label><input type="radio" name="q4" value="a"> A) Formas de declarar variáveis</label><br>
+            <label><input type="radio" name="q4" value="b"> B) Tipos de dados</label><br>
+            <label><input type="radio" name="q4" value="c"> C) Métodos de string</label>
+        </div>
+        <div class="question">
+            <p>5. O que faz o operador `===`?</p>
+            <label><input type="radio" name="q5" value="a"> A) Compara valor e tipo</label><br>
+            <label><input type="radio" name="q5" value="b"> B) Compara apenas valor</label><br>
+            <label><input type="radio" name="q5" value="c"> C) Atribui valor</label>
+        </div>
+        <button type="button" onclick="submitQuiz()">Enviar</button>
+    </form>
+    <div id="result" class="result"></div>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+            const answers = {
+                q1: 'a',
+                q2: 'a',
+                q3: 'b',
+                q4: 'a',
+                q5: 'a'
+            };
+
+            for (let question in answers) {
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (userAnswer && userAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            document.getElementById('result').innerText = `Você acertou ${score} de 5 perguntas.`;
+        }
+    </script>
+</body>
+</html>
